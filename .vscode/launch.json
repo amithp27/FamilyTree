@@ -1,0 +1,18 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - CallMain",
+            "request": "launch",
+            "mainClass": "Family.CallMain",
+            "projectName": "FamilyTree"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - App",
+            "request": "launch",
+            "mainClass": "app.App",
+            "projectName": "FamilyTree"
+        }
+    ]
+}
