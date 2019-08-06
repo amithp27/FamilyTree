@@ -3,22 +3,19 @@ package Family;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.function.Consumer;
+
+// Amith M - 9035093734
 
 public class Family {
-
-    //Dummy
-    public static final String UNDEFINED = "UNKOWN";
     
     //List of all members
     private HashMap<String, Member> members = new HashMap<>();
 
     /**
-     * Adding undefined as dummy member when initializing Family
+     * Constructor with dummy
      */
-    public Family(Consumer<Family> fillFamilyTree) {
-        this.addMember(UNDEFINED, null);
-        fillFamilyTree.accept(this);
+    public Family() {
+        this.addMember(Utility.UNDEFINED, Gender.FEMALE);
     }
 
     /**
@@ -48,14 +45,14 @@ public class Family {
         if (members.containsKey(name)) {
             return members.get(name);
         } else {
-            throw new MemberNotFoundException();
+            return null;
         }
     }
 
     /**
      * Exception if Member does not exist
      */
-    public class MemberNotFoundException extends RuntimeException {}
+    // public class MemberNotFoundException extends RuntimeException {}
 
     /**
      * Member Class
@@ -73,9 +70,9 @@ public class Family {
         private Member(String name, Gender gender){
             this.name = name;
             this. gender = gender;
-            this.spouse = members.get(UNDEFINED);
-            this.father = members.get(UNDEFINED);
-            this.mother = members.get(UNDEFINED);
+            this.spouse = members.get(Utility.UNDEFINED);
+            this.father = members.get(Utility.UNDEFINED);
+            this.mother = members.get(Utility.UNDEFINED);
         }
 
         public String getName() {

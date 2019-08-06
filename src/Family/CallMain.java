@@ -2,130 +2,90 @@ package Family;
 
 import Family.Family;
 import Family.Gender;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 
-import static Family.Relationships.*;
+// Amith M - 9035093734
 
 public class CallMain {
+    public static void main(String[] args) throws FileNotFoundException {
+        Family fam1 = new Family();
 
-    public static void main(String[] args) {
-        final Family shan = new Family(CallMain::fillFamilyTree);
-        
-        final Family.Member mem1 = shan.getMember("Krpi");
-        final Family.Member mem2 = shan.getMember("Dritha");
-        final Family.Member mem3 = shan.getMember("Aras");
+        //Setting up KingShan and Queen Anga
+        Family.Member king = fam1.addMember(Utility.KINGSHAN, Gender.MALE);
+        Family.Member queen = fam1.addMember(Utility.QUEENANGA, Gender.FEMALE);
+        king.isSpouseOf(queen);
+        queen.isSpouseOf(king);
 
-        System.out.println("1. Sister-In-Laws of " +mem1+ " : " + SISTER_IN_LAW.to(mem1));
-        System.out.println("2. Cousins of " +mem2+ " : " + COUSIN.to(mem2));
-        System.out.println("3. Parental Uncles of " +mem2+ " : " + PATERNAL_UNCLE.to(mem2));
-        System.out.println("4. Grand-daughters of " +mem3+ " : " + GRANDDAUGHTER.to(mem3));
+        //Read from input file
+        CallMain.readInputs(fam1);
     }
 
-    public static void fillFamilyTree(Family fam) {
-        //Constructed as per Chart in PDF [https://www.geektrust.in/api/pdf/open/PS1]
-
-        //Members
-        Family.Member kingShan = fam.addMember("King Shan", Gender.MALE);
-        Family.Member queenAnga = fam.addMember("Queen Anga", Gender.FEMALE);
-        Family.Member ish = fam.addMember("Ish", Gender.MALE);
-        Family.Member chit = fam.addMember("Chit", Gender.MALE);
-        Family.Member ambi = fam.addMember("Amba", Gender.FEMALE);
-        Family.Member vich = fam.addMember("Vich", Gender.MALE);
-        Family.Member lika = fam.addMember("Lika", Gender.FEMALE);
-        Family.Member aras = fam.addMember("Aras", Gender.MALE);
-        Family.Member chitra = fam.addMember("Chitra", Gender.FEMALE);
-        Family.Member satya = fam.addMember("Satya", Gender.FEMALE);
-        Family.Member vyan = fam.addMember("Vyan", Gender.MALE);
-        Family.Member dritha = fam.addMember("Dritha", Gender.FEMALE);
-        Family.Member jaya = fam.addMember("Jaya", Gender.MALE);
-        Family.Member vritha = fam.addMember("Vritha", Gender.MALE);
-        Family.Member tritha = fam.addMember("Tritha", Gender.FEMALE);
-        Family.Member vila = fam.addMember("Vila", Gender.FEMALE);
-        Family.Member chika = fam.addMember("Chika", Gender.FEMALE);
-        Family.Member arit = fam.addMember("Arit", Gender.MALE);
-        Family.Member ahit = fam.addMember("Ahit", Gender.MALE);
-        Family.Member jnki = fam.addMember("Jnki", Gender.FEMALE);
-        Family.Member satvy = fam.addMember("Satvy", Gender.FEMALE);
-        Family.Member asva = fam.addMember("Asva", Gender.MALE);
-        Family.Member krpi = fam.addMember("Krpi", Gender.FEMALE);
-        Family.Member vyas = fam.addMember("Vyas", Gender.MALE);
-        Family.Member atya = fam.addMember("Atya", Gender.FEMALE);
-        Family.Member yodhan = fam.addMember("Yodhan", Gender.MALE);
-        Family.Member laki = fam.addMember("Laki", Gender.MALE);
-        Family.Member lavnya = fam.addMember("lavnya", Gender.FEMALE);
-        Family.Member vasa = fam.addMember("Vasa", Gender.MALE);
-        Family.Member kriya = fam.addMember("kriya", Gender.MALE);
-        Family.Member krithi = fam.addMember("Krithi", Gender.FEMALE);
-
-        //Relationships
-        //KingShan and QueenAnga Children
-        kingShan.isSpouseOf(queenAnga);
-        kingShan.isParentOf(ish);
-        queenAnga.isParentOf(ish);
-        kingShan.isParentOf(chit);
-        queenAnga.isParentOf(chit);
-        kingShan.isParentOf(vich);
-        queenAnga.isParentOf(vich);
-        kingShan.isParentOf(satya);
-        queenAnga.isParentOf(satya);
-        kingShan.isParentOf(aras);
-        queenAnga.isParentOf(aras);
-
-        //Chit and Ambi Children
-        chit.isSpouseOf(ambi);
-        chit.isParentOf(dritha);
-        ambi.isParentOf(dritha);
-        chit.isParentOf(vritha);
-        ambi.isParentOf(vritha);
-        chit.isParentOf(tritha);
-        ambi.isParentOf(tritha);
-
-        //Vich and Lika children
-        vich.isSpouseOf(lika);
-        vich.isParentOf(vila);
-        lika.isParentOf(vila);
-        vich.isParentOf(chika);
-        lika.isParentOf(chika);
-
-        //Aras and Chitra children
-        aras.isSpouseOf(chitra);
-        aras.isParentOf(jnki);
-        chitra.isParentOf(jnki);
-        aras.isParentOf(ahit);
-        chitra.isParentOf(ahit);
-
-        //Satya and Vyan Children
-        satya.isSpouseOf(vyan);
-        satya.isParentOf(asva);
-        vyan.isParentOf(asva);
-        satya.isParentOf(vyas);
-        vyan.isParentOf(vyas);
-        satya.isParentOf(atya);
-        vyan.isParentOf(atya);
-
-        //Jaya and Dritha Children
-        jaya.isSpouseOf(dritha);
-        jaya.isParentOf(yodhan);
-        dritha.isParentOf(yodhan);
-
-        //Arit and Jnki Children
-        arit.isSpouseOf(jnki);
-        arit.isParentOf(laki);
-        jnki.isParentOf(laki);
-        arit.isParentOf(lavnya);
-        jnki.isParentOf(lavnya);
-
-        //Vyas ans Krpi Children
-        krpi.isSpouseOf(vyas);
-        vyas.isSpouseOf(asva);
-        krpi.isParentOf(kriya);
-        vyas.isParentOf(kriya);
-        krpi.isParentOf(krithi);
-        vyas.isParentOf(krithi);
-
-        //Satvy and Asva Children
-        satvy.isSpouseOf(asva);
-        satvy.isParentOf(vasa);
-        asva.isParentOf(vasa);
-
+    public static void readInputs(Family fam) throws FileNotFoundException {
+        File file = new File(Utility.INPUT_FILE_PATH);
+        Scanner sc = new Scanner(file); 
+        //Using array to store params from each line.
+        String[] str = new String[4];
+        while (sc.hasNextLine()) {
+            str = sc.nextLine().split(Utility.SPACE);
+            if(str[0].isEmpty() || str[0].equals(Utility.COMMENTS)){
+                continue;
+            } else {
+                //Assuming that first mentioned member always exists already
+                //if second member doesn't exist, we create new one.
+                if (str[0].equals(Utility.ADD_CHILD)) {
+                    //Format : ADD_CHILD vyas krpi Female
+                    //Syntax : ADD_CHILD <mothers_name> <childs_name> <gender_of_child>
+                    //Array  : str[0]       str[1]          str[2]          str[3]
+                    Family.Member mem1 = fam.getMember(str[1]);
+                    Family.Member mem2 = (fam.getMember(str[2]) == null) ? fam.addMember(str[2], str[3].toUpperCase().equals("MALE")?Gender.MALE:Gender.FEMALE) : fam.getMember(str[2]);
+                    mem1.isParentOf(mem2);
+                    mem1.getSpouse().isParentOf(mem2);
+                } else if (str[0].equals(Utility.ADD_SPOUSE)) {
+                    //Format : ADD_SPOUSE vyas krpi Female
+                    //Syntax : ADD_SPOUSE <name> <name_of_spouse> <gender_of_spouse>
+                    //Array  :  str[0]    str[1]    str[2]              str[3]
+                    Family.Member mem1 = fam.getMember(str[1]);
+                    Family.Member mem2 = (fam.getMember(str[2]) == null) ? fam.addMember(str[2], str[3].toUpperCase().equals("MALE")?Gender.MALE:Gender.FEMALE) : fam.getMember(str[2]);
+                    mem1.isSpouseOf(mem2);
+                    mem2.isSpouseOf(mem1);
+                } else if (str[0].equals(Utility.GET_RELATIONSHIP)) {
+                    //Format : GET_RELATIONSHIP jaya SISTER_IN_LAW
+                    //Syntax : GET_RELATIONSHIP <name> <Relationship>
+                    //Array  :      str[0]       str[1]     str[2]
+                    if(fam.getMember(str[1]) != null) {
+                        Family.Member mem3 = fam.getMember(str[1]);
+                        System.out.print(str[2] + " of " + str[1] + " are : " );
+                        switch(str[2].toUpperCase()) {
+                            case Utility.BROTHER : System.out.print( Relationships.BROTHER.to(mem3)); break;
+                            case Utility.CHILDREN : System.out.print( Relationships.CHILDREN.to(mem3)); break;
+                            case Utility.BROTHER_IN_LAW : System.out.print( Relationships.BROTHER_IN_LAW.to(mem3)); break;
+                            case Utility.COUSIN : System.out.print( Relationships.COUSIN.to(mem3)); break;
+                            case Utility.FATHER : System.out.print( Relationships.FATHER.to(mem3)); break;
+                            case Utility.GRANDDAUGHTER : System.out.print( Relationships.GRANDDAUGHTER.to(mem3)); break;
+                            case Utility.GRANDSON : System.out.print( Relationships.GRANDSON.to(mem3)); break;
+                            case Utility.GRANDCHILDREN : System.out.print( Relationships.GRANDCHILDREN.to(mem3)); break;
+                            case Utility.DAUGHTER : System.out.print( Relationships.DAUGHTER.to(mem3)); break;
+                            case Utility.MATERNAL_AUNT : System.out.print( Relationships.MATERNAL_AUNT.to(mem3)); break;
+                            case Utility.MATERNAL_UNCLE : System.out.print( Relationships.MATERNAL_UNCLE.to(mem3)); break;
+                            case Utility.MOTHER : System.out.print( Relationships.MOTHER.to(mem3)); break;
+                            case Utility.SISTER : System.out.print(Relationships.SISTER.to(mem3)); break;
+                            case Utility.SISTER_IN_LAW : System.out.print( Relationships.SISTER_IN_LAW.to(mem3)); break;
+                            case Utility.SPOUSE : System.out.print(Relationships.SPOUSE.to(mem3)); break;
+                            case Utility.SON : System.out.print(Relationships.SON.to(mem3)); break;
+                            case Utility.SIBLINGS : System.out.print(Relationships.SIBLINGS.to(mem3)); break;
+                            case Utility.PATERNAL_AUNT : System.out.print( Relationships.PATERNAL_AUNT.to(mem3)); break;
+                            case Utility.PATERNAL_UNCLE : System.out.print( Relationships.PATERNAL_UNCLE.to(mem3)); break;
+                            default: System.out.print(Utility.INVALID_RELATIONSHIP);
+                        }
+                    } else {
+                        System.out.print(Utility.PERSON_NOT_FOUND);
+                    }
+                    System.out.printf("\n" + Utility.LINE + "\n");
+                }
+            }
+        }
+        sc.close();
     }
 }

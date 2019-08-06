@@ -1,0 +1,67 @@
+# Amith M - 9035093734
+# Comments are expected to start with a '#' followed by a space ' '.
+# Assuming that kingShan and queenAnga have already been added
+# Bwlo is modelled w.r.t the flowchart shown in https://www.geektrust.in/api/pdf/open/PS1
+
+# Add kingShan's and queenAnga's childrens
+ADD_CHILD queenAnga chit Male
+ADD_CHILD queenAnga ish Male
+ADD_CHILD queenAnga vich Male
+ADD_CHILD queenAnga aras Male
+ADD_CHILD queenAnga satya Female
+
+# Add kingShan's and queenAnga's children's spouses
+ADD_SPOUSE chit amba Female
+ADD_SPOUSE vich lika Female
+ADD_SPOUSE aras chitra Female
+ADD_SPOUSE satya vyan Male
+
+# Add Chit and Amba's children
+ADD_CHILD chit dritha Female
+ADD_CHILD chit thritha Female
+ADD_CHILD chit vritha Male
+
+# Add Chit and Amba's childrens spouses
+ADD_SPOUSE dritha jaya Male
+
+# Add Dritha and Jaya's children
+ADD_CHILD dritha yodhan Male
+
+# Add Vich and Lika's children
+ADD_CHILD lika vila Female
+ADD_CHILD lika chika Female
+
+# Add Aras and Chitra's children
+ADD_CHILD chitra ahit Male
+ADD_CHILD chitra jnki Female
+
+# Add Aras and Chitra's childrens spouses
+ADD_SPOUSE jnki arit Male
+
+# Add Arit and Jnki's children
+ADD_CHILD jnki laki Male
+ADD_CHILD jnki lavnya Female
+
+# Add Satya and Vyan's children
+ADD_CHILD satya asva Male
+ADD_CHILD satya vyas Male
+ADD_CHILD satya atya Female
+
+# Add Satya and Vyan's childrens spouses
+ADD_SPOUSE asva satvy Female
+ADD_SPOUSE vyas krpi Female
+
+# Add Satvy and Asva's children
+ADD_CHILD satvy vasa Male
+
+# Add Krpi and Vyas's children
+ADD_CHILD krpi kriya Male
+ADD_CHILD krpi krithi Female
+
+# GET RELATIONSHIPS
+# GET_RELATIONSHIP jaya SISTER_IN_LAW
+GET_RELATIONSHIP jaya BROTHER_IN_LAW
+GET_RELATIONSHIP aras BROTHER 
+GET_RELATIONSHIP aras SIBLINGS 
+GET_RELATIONSHIP queenAnga GRANDCHILDREN
+GET_RELATIONSHIP queenAnga GRANDSON

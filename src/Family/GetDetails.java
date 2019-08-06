@@ -6,6 +6,8 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Stream;
 
+// Amith M - 9035093734
+
 public class GetDetails {
     /**
      * Get Mother for Stream<members>

@@ -21,6 +21,8 @@ import static Family.GetDetails.daughters;
 import static Family.GetDetails.sisters;
 import static Family.GetDetails.brothers;
 
+// Amith M - 9035093734
+
 public enum Relationships {
     //First connections
     MOTHER(member -> mother(of(member))),
@@ -40,7 +42,15 @@ public enum Relationships {
     GRANDSON(member -> SON.to(children(of(member)))),
     GRANDDAUGHTER(member -> DAUGHTER.to(children(of(member)))),
 
-    //Cousing
+    //Cousins
+    GRANDCHILDREN(member -> union(
+            SON.to(children(of(member))),
+            DAUGHTER.to(children(of(member))))),
+
+    //Siblings
+    SIBLINGS(member -> (siblings(of(member)))),
+
+    //Cousins
     COUSIN(member -> union(
             CHILDREN.to(siblings(father(of(member)))),
             CHILDREN.to(siblings(mother(of(member)))))),
@@ -54,19 +64,11 @@ public enum Relationships {
             SPOUSE.to(brothers(of(member))))),
 
     //Paternal and Maternal Uncles/Aunts
-    PATERNAL_UNCLE(member -> union(
-            BROTHER.to(father(of(member))),
-            BROTHER_IN_LAW.to(father(of(member))))),
-    MATERNAL_UNCLE(member -> union(
-            BROTHER.to(mother(of(member))),
-            BROTHER_IN_LAW.to(mother(of(member))))),
-    PATERNAL_AUNT(member -> union(
-            SISTER.to(father(of(member))),
-            SISTER_IN_LAW.to(father(of(member))))),
-    MATERNAL_AUNT(member -> union(
-            SISTER.to(mother(of(member))),
-            SISTER_IN_LAW.to(mother(of(member)))));
-
+    PATERNAL_UNCLE(member -> BROTHER.to(father(of(member)))),
+    MATERNAL_UNCLE(member -> BROTHER.to(mother(of(member)))),
+    PATERNAL_AUNT(member -> SISTER.to(father(of(member)))),
+    MATERNAL_AUNT(member -> SISTER.to(mother(of(member))));
+    
     private Function<Family.Member, Stream<Family.Member>> function;
     
     Relationships(Function<Family.Member, Stream<Family.Member>> func){
@@ -88,6 +90,5 @@ public enum Relationships {
         return arr.stream()
                 .reduce(Stream::concat)
                 .orElseThrow(RuntimeException::new);
-
     }
 }
