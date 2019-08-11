@@ -3,7 +3,8 @@ package Family;
 // Amith M - 9035093734
 
 public class Utility {
-    public static final String INPUT_FILE_PATH = "C:\\Users\\ma58\\ma58Private\\geekTrustFamily\\FamilyTree\\FamilyTree\\src\\Family\\Inputs.txt";
+    public static final String INPUT_FILE_PATH = "\\src\\Family\\Inputs.txt";
+    public static final String DIR = "user.dir";
     public static final String ADD_CHILD = "ADD_CHILD";
     public static final String ADD_PARENT = "ADD_PARENT";
     public static final String ADD_SPOUSE = "ADD_SPOUSE";
@@ -32,7 +33,8 @@ public class Utility {
     public static final String SIBLINGS = "SIBLINGS";
     public static final String PATERNAL_AUNT = "PATERNAL_AUNT";
     public static final String PATERNAL_UNCLE = "PATERNAL_UNCLE";
-    public static final String INVALID_RELATIONSHIP = "INVALID RELATIONSHIP";
+    public static final String INVALID_RELATIONSHIP = "RELATIONSHIP_NOT_FOUND";
     public static final String PERSON_NOT_FOUND = "PERSON_NOT_FOUND";
+    public static final String INPUT_FILE_NOT_FOUND = "INPUT_FILE_NOT_FOUND [Path provided could be incorrect, please recheck]";
     public static final String LINE = "--------------------------------------------------------------------------------------";
 }
